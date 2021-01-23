@@ -78,23 +78,15 @@ class ContactsApp extends Contacts {
             const address = document.getElementsByTagName("input")[2];
             const phone = document.getElementsByTagName("input")[3];   
 
-            let regexpEmail = /^([a-z]+[\d-_\.]*){3,}@[a-z]+\.[a-z]{2,11}$/gi,
-                regexpPhone = /\+?\s?\d{2,3}\s?[-(]?\d{2}\s?[-)]?\s?\d{3}[-]?\d{2}[-]?\d{2}[-]?/gi; 
+            self.add(name.value, email.value, address.value, phone.value);
 
-            if (regexpEmail.test(email.value) == false || regexpPhone.test(phone.value) == false) {
-                alert('Ошибка');
-                email.value = phone.value = ''; 
-            } else {
-                self.add(name.value, email.value, address.value, phone.value);
-                console.log(this.arrContacts);
-                if (document.querySelectorAll('li')) {
-                    document.querySelectorAll('li').forEach(element => element.remove());
-                }
-                    
-                this.createContacts();
-
-                name.value = email.value = address.value = phone.value = '';
+            if (document.querySelectorAll('li')) {
+                document.querySelectorAll('li').forEach(element => element.remove());
             }
+                    
+            this.createContacts();
+
+            name.value = email.value = address.value = phone.value = '';
         });
 
         const btnReset = document.querySelector('.reset');
