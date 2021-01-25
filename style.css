@@ -64,7 +64,7 @@ input {
 .fa-trash-o:hover,
 .fa-pencil:hover {
     transition: color 0.2s linear;
-    color: #1f3f1e;
+    color: #1f3f1e8e;
 }
 .button {
     display: flex;
@@ -86,6 +86,6 @@ input {
 .add:hover,
 .reset:hover {
     transition: all 0.7s ease;
-    background-color: #1f3f1e;
+    background-color: #1f3f1e8e;
     color: #ffffff;
 }

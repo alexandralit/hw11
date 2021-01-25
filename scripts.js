@@ -1,10 +1,10 @@
 class User {
     constructor(name, email, address, phone) {
         this.data = {
-          name: name,
-          email: email,
-          address: address,
-          phone: phone        
+            name: name,
+            email: email,
+            address: address,
+            phone: phone        
         };
     }
 
@@ -46,12 +46,9 @@ class ContactsApp extends Contacts {
 
         this.app = document.createElement('div');
         this.create();
-        this.get();
     }
 
     create() {
-        const self = this;
-
         document.body.appendChild(this.app);
         this.app.classList.add('contacts');
 
@@ -73,12 +70,12 @@ class ContactsApp extends Contacts {
 
         const btnAdd = document.querySelector('.add');
         btnAdd.addEventListener('click', () => {
-            const name = document.getElementsByTagName("input")[0];
-            const email = document.getElementsByTagName("input")[1];
-            const address = document.getElementsByTagName("input")[2];
-            const phone = document.getElementsByTagName("input")[3];   
+            let name = document.getElementsByTagName("input")[0],
+                email = document.getElementsByTagName("input")[1],
+                address = document.getElementsByTagName("input")[2],
+                phone = document.getElementsByTagName("input")[3];   
 
-            self.add(name.value, email.value, address.value, phone.value);
+            this.add(name.value, email.value, address.value, phone.value);
 
             if (document.querySelectorAll('li')) {
                 document.querySelectorAll('li').forEach(element => element.remove());
@@ -97,8 +94,6 @@ class ContactsApp extends Contacts {
     }
 
     createContacts() {
-        const self = this;
-        
         this.arrContacts.map(user => {
             const pencil = document.createElement('i');
             pencil.classList.add('fa');
@@ -119,7 +114,7 @@ class ContactsApp extends Contacts {
             document.querySelector('ul').append(li);
 
             trash.addEventListener('click', () => {
-				self.remove(user.id);
+				this.remove(user.id);
 				li.remove();
             });
             
@@ -129,7 +124,7 @@ class ContactsApp extends Contacts {
                 user.address = prompt('Редактировать адрес:', user.address);
                 user.phone = prompt('Редактировать телефон:', user.phone);
 
-                self.edit(user.id, user.name, user.email, user.address, user.phone);
+                this.edit(user.id, user.name, user.email, user.address, user.phone);
 
                 p.innerHTML = 'Имя: ' + user.name + '<br> Email: ' + user.email + '<br> Адрес: ' + user.address + '<br> Телефон: ' + user.phone;
                 li.append(p, span);
